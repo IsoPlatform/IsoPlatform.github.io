@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{ site.description }}">
+    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <nav class="site-nav">
+                <a href="{{ '/' | relative_url }}" class="site-logo">
+                    <span class="logo-icon">📊</span>
+                    <span class="logo-text">{{ site.title }}</span>
+                </a>
+                <ul class="nav-menu">
+                    <li><a href="{{ '/' | relative_url }}">Inicio</a></li>
+                    <li><a href="{{ '/iso9001.html' | relative_url }}">ISO 9001</a></li>
+                    <li><a href="{{ '/iso14001.html' | relative_url }}">ISO 14001</a></li>
+                    <li><a href="{{ '/iso45001.html' | relative_url }}">ISO 45001</a></li>
+                    <li><a href="{{ '/about.html' | relative_url }}">Acerca de</a></li>
+                </ul>
+                <button class="menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="site-content">
+        <div class="container">
+            {{ content }}
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ISO Platform</h3>
+                    <p>Excelencia en Gestión a través de Estándares Internacionales</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Estándares</h4>
+                    <ul>
+                        <li><a href="{{ '/iso9001.html' | relative_url }}">ISO 9001 - Calidad</a></li>
+                        <li><a href="{{ '/iso14001.html' | relative_url }}">ISO 14001 - Medio Ambiente</a></li>
+                        <li><a href="{{ '/iso45001.html' | relative_url }}">ISO 45001 - Seguridad</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Recursos</h4>
+                    <ul>
+                        <li><a href="{{ '/about.html' | relative_url }}">Acerca de Nosotros</a></li>
+                        <li><a href="https://github.com/IsoPlatform" target="_blank">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; {{ 'now' | date: "%Y" }} ISO Platform. Dedicado a la excelencia organizacional.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.site-nav')) {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+# Site settings
+title: ISO Platform
+description: >-
+  Organización dedicada a la implementación y mejora continua de estándares internacionales
+  ISO 9001, ISO 14001, ISO 45001 y otros estándares de calidad.
+baseurl: ""
+url: "https://isoplatform.github.io"
+
+# Build settings
+markdown: kramdown
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Navigation
+header_pages:
+  - index.md
+  - iso9001.md
+  - iso14001.md
+  - iso45001.md
+  - about.md
+
+# Collections
+collections:
+  standards:
+    output: true
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
