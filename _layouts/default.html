@@ -17,18 +17,24 @@
                     <span class="logo-icon">📊</span>
                     <span class="logo-text">{{ site.title }}</span>
                 </a>
-                <ul class="nav-menu">
-                    <li><a href="{{ '/' | relative_url }}">Inicio</a></li>
-                    <li><a href="{{ '/iso9001.html' | relative_url }}">ISO 9001</a></li>
-                    <li><a href="{{ '/iso14001.html' | relative_url }}">ISO 14001</a></li>
-                    <li><a href="{{ '/iso45001.html' | relative_url }}">ISO 45001</a></li>
-                    <li><a href="{{ '/about.html' | relative_url }}">Acerca de</a></li>
-                </ul>
-                <button class="menu-toggle" aria-label="Toggle menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
+                <div class="nav-right">
+                    <ul class="nav-menu">
+                        <li><a href="{{ '/' | relative_url }}">Inicio</a></li>
+                        <li><a href="{{ '/iso9001.html' | relative_url }}">ISO 9001</a></li>
+                        <li><a href="{{ '/iso14001.html' | relative_url }}">ISO 14001</a></li>
+                        <li><a href="{{ '/iso45001.html' | relative_url }}">ISO 45001</a></li>
+                        <li><a href="{{ '/about.html' | relative_url }}">Acerca de</a></li>
+                    </ul>
+                    <button class="theme-toggle" aria-label="Toggle theme" title="Cambiar tema">
+                        <span class="sun-icon">☀️</span>
+                        <span class="moon-icon">🌙</span>
+                    </button>
+                    <button class="menu-toggle" aria-label="Toggle menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
             </nav>
         </div>
     </header>
@@ -69,6 +75,21 @@
     </footer>
 
     <script>
+        // Theme toggle functionality
+        const themeToggle = document.querySelector('.theme-toggle');
+        const html = document.documentElement;
+        
+        // Check for saved theme preference or default to light mode
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        html.setAttribute('data-theme', currentTheme);
+        
+        themeToggle.addEventListener('click', () => {
+            const theme = html.getAttribute('data-theme');
+            const newTheme = theme === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+
         // Mobile menu toggle
         const menuToggle = document.querySelector('.menu-toggle');
         const navMenu = document.querySelector('.nav-menu');

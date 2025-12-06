@@ -20,6 +20,23 @@
     --transition: all 0.3s ease;
 }
 
+/* --- Dark Mode Variables --- */
+[data-theme="dark"] {
+    --primary-color: #3b82f6;
+    --secondary-color: #10b981;
+    --accent-color: #fbbf24;
+    --danger-color: #f87171;
+    --text-primary: #f9fafb;
+    --text-secondary: #d1d5db;
+    --bg-light: #111827;
+    --bg-white: #1f2937;
+    --border-color: #374151;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6);
+}
+
 /* --- Reset & Base --- */
 * {
     margin: 0;
@@ -84,6 +101,12 @@ a:hover {
     padding: 1rem 0;
 }
 
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
 .site-logo {
     display: flex;
     align-items: center;
@@ -128,6 +151,54 @@ a:hover {
     height: 3px;
     background-color: var(--text-primary);
     transition: var(--transition);
+}
+
+/* --- Theme Toggle --- */
+.theme-toggle {
+    background: none;
+    border: 2px solid var(--border-color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.theme-toggle:hover {
+    border-color: var(--primary-color);
+    transform: rotate(20deg);
+}
+
+.sun-icon,
+.moon-icon {
+    position: absolute;
+    font-size: 1.25rem;
+    transition: var(--transition);
+}
+
+[data-theme="light"] .sun-icon {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+}
+
+[data-theme="light"] .moon-icon {
+    opacity: 0;
+    transform: rotate(90deg) scale(0);
+}
+
+[data-theme="dark"] .sun-icon {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0);
+}
+
+[data-theme="dark"] .moon-icon {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
 }
 
 /* --- Main Content --- */
@@ -801,6 +872,12 @@ section {
 @media (max-width: 768px) {
     .hero h1, .page-header h1 {
         font-size: 2rem;
+    }
+
+    .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
     }
 
     .nav-menu {
